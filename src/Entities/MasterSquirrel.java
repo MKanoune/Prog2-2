@@ -15,7 +15,15 @@ public class MasterSquirrel extends Entity {
         super(id, 1000, x, y);
     }
 
-    public void setEntities(ArrayList<Entity> entities) { this.entities = entities; }
+
+    /*
+    * Give the Squirrel all entities 'cause it needs to check it's further posistions.
+    * Also give the miniSquirrels (same ID) all entities.
+     */
+    public void setEntities(ArrayList<Entity> entities) {
+        this.entities = entities;
+    }
+
 
     /*
     * Read from the console and give the input value to the newPos method.
@@ -78,8 +86,7 @@ public class MasterSquirrel extends Entity {
 
                     if (e instanceof GoodPlant) {
                         this.setEnergy(e.getEnergy());
-                        entities.remove(e);
-                        e = null;
+                        // toDo: remove good Plant
                     } else {
                         //toDo: handle other entities
                     }

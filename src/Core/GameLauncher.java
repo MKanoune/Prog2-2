@@ -23,7 +23,7 @@ public class GameLauncher {
         MasterSquirrel master = new MasterSquirrel(3, 2, 2);
         MiniSquirrel mini = master.createMiniSquirrel(200);
         entities.add(master);
-        entities.add(mini);
+//        entities.add(mini);
         master.setEntities(entities);
 
         for (int i = 0; i < 3; i++) {
@@ -32,7 +32,9 @@ public class GameLauncher {
             }
         }
 
-        System.out.println(entities.get(2).toString());
+
+
+        System.out.println(entities.get(3).toString());
 
     }
 }

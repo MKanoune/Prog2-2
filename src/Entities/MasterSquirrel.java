@@ -10,41 +10,28 @@ import java.util.ArrayList;
  */
 public class MasterSquirrel extends Entity {
     private ArrayList<Entity> entities;
+    private int direction;
 
     public MasterSquirrel(int id, int x, int y) {
         super(id, 1000, x, y);
     }
 
 
-    /*
-    * Give the Squirrel all entities 'cause it needs to check it's further posistions.
-    * Also give the miniSquirrels (same ID) all entities.
-     */
+    //Give the squirrel all entities to check the further positions
     public void setEntities(ArrayList<Entity> entities) {
         this.entities = entities;
     }
 
 
-    /*
-    * Read from the console and give the input value to the newPos method.
-    * For Instructions read the comment @XY.getNewPosSquirrel(int direction)
-     */
+    // Create new Position with a helper method @XY
     public void nextStep() {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int direction = 0;
-        try {
-            String line = br.readLine();
-            direction = Integer.parseInt(line);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-        }
-
         XY newPos = this.getPosition().getNewPosSquirrel(direction);
         checkNextPosition(entities, newPos);
         this.setPosition(newPos);
     }
+
+    // Method to set the userInput from the Game Class
+    public void getUserInput(int direction) { this.direction = direction; }
 
 
     //check if a miniSquirrel is created by this masterSq.
@@ -69,7 +56,7 @@ public class MasterSquirrel extends Entity {
         }
 
         MiniSquirrel miniSquirrel =  new MiniSquirrel(this.getId(), this.getPosition().getX(), this.getPosition().getY());
-        miniSquirrel.setEnergy(-(1000 - energy));
+        miniSquirrel.updateEnergy(-(1000 - energy));
         return miniSquirrel;
     }
 
@@ -85,8 +72,8 @@ public class MasterSquirrel extends Entity {
                 if (nextPos.getY() == e.getPosition().getY()) {
 
                     if (e instanceof GoodPlant) {
-                        this.setEnergy(e.getEnergy());
-                        // toDo: remove good Plant
+                        this.updateEnergy(e.getEnergy());
+                        e.setAlive(false);
                     } else {
                         //toDo: handle other entities
                     }
@@ -97,6 +84,6 @@ public class MasterSquirrel extends Entity {
 
 
     public String toString() {
-        return "ID: " +this.getId() +" mit einem Energiewert von " +this.getEnergy();
+        return "X Pos: " +this.getPosition().getX() +" Y Pos: " +this.getPosition().getY() +" " +this.getEnergy();
     }
 }

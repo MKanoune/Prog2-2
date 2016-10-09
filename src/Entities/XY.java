@@ -57,7 +57,8 @@ public class XY {
      */
     public XY getNewPosSquirrel(int direction) {
         if (direction == 2) {
-            return new XY(x, y - 1);
+            return new XY(x
+                    , y - 1);
         } else if (direction == 4) {
             return new XY(x - 1, y);
         } else if (direction == 6) {

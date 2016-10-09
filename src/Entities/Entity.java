@@ -7,6 +7,7 @@ public abstract class Entity {
     private final int id;
     private int energy;
     private XY position;
+    private boolean alive = true;
 
     public Entity(int id, int energy, int x, int y) {
         this.id = id;
@@ -21,7 +22,11 @@ public abstract class Entity {
 
     public XY getPosition() { return position; }
 
-    public void setEnergy(int deltaE) {
+    public boolean isAlive() { return alive; }
+
+    public void setAlive(boolean status) { alive = status; }
+
+    public void updateEnergy(int deltaE) {
         energy += deltaE;
     }
 

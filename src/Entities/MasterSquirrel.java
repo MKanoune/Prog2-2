@@ -25,7 +25,7 @@ public class MasterSquirrel extends Entity {
 
     // Create new Position with a helper method @XY
     public void nextStep() {
-        XY newPos = this.getPosition().getNewPosSquirrel(direction);
+        XY newPos = this.getPos().getNewPosSquirrel(direction);
         checkNextPosition(entities, newPos);
         this.setPosition(newPos);
     }
@@ -55,7 +55,7 @@ public class MasterSquirrel extends Entity {
             return null;
         }
 
-        MiniSquirrel miniSquirrel =  new MiniSquirrel(this.getId(), this.getPosition().getX(), this.getPosition().getY());
+        MiniSquirrel miniSquirrel =  new MiniSquirrel(this.getId(), this.getPos().getX(), this.getPos().getY());
         miniSquirrel.updateEnergy(-(1000 - energy));
         return miniSquirrel;
     }
@@ -68,8 +68,8 @@ public class MasterSquirrel extends Entity {
      */
     public void checkNextPosition(ArrayList<Entity> entities, XY nextPos) {
         for (Entity e : entities) {
-            if (nextPos.getX() == e.getPosition().getX()) {
-                if (nextPos.getY() == e.getPosition().getY()) {
+            if (nextPos.getX() == e.getPos().getX()) {
+                if (nextPos.getY() == e.getPos().getY()) {
 
                     if (e instanceof GoodPlant) {
                         this.updateEnergy(e.getEnergy());
@@ -84,6 +84,6 @@ public class MasterSquirrel extends Entity {
 
 
     public String toString() {
-        return "X Pos: " +this.getPosition().getX() +" Y Pos: " +this.getPosition().getY() +" " +this.getEnergy();
+        return "X Pos: " +this.getPos().getX() +" Y Pos: " +this.getPos().getY() +" " +this.getEnergy();
     }
 }

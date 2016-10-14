@@ -14,6 +14,6 @@ public class GoodPlant extends Entity {
     }
 
     public String toString() {
-        return "X Pos: " +this.getPosition().getX() +" Y Pos: " +this.getPosition().getY() +" " +this.getEnergy();
+        return "X Pos: " +this.getPos().getX() +" Y Pos: " +this.getPos().getY() +" " +this.getEnergy();
     }
 }

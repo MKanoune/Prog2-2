@@ -10,4 +10,8 @@ public class Wall extends Entity {
     }
 
     public void nextStep() {    }
+    
+    public String toString() {
+    	return "ID:" +this.getId() +" x: " +this.getPos().getX() +" y: " +this.getPos().getY();
+    }
 }

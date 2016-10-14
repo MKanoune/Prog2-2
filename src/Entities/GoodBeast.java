@@ -10,6 +10,6 @@ public class GoodBeast extends Entity {
     }
 
     public void nextStep() {
-        this.setPosition(this.getPosition().getNewPos());
+        this.setPosition(this.getPos().getNewPos());
     }
 }

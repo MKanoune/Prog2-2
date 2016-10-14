@@ -31,7 +31,12 @@ public class Game {
         }
     }
 
-    // get the userInput for all Master/Mini Squirrels
+    
+    /*
+     * Get the user Input from the console
+     * check for Master / Minisquirrel before
+     * @processInputHelper just returns a number responding to the users direction
+     */
     public void processInput(int counter) {
          for (Entity e : entities) {
              if (e instanceof MasterSquirrel) {
@@ -81,7 +86,7 @@ public class Game {
         }
         for (Entity e : entities) {
             if (!e.isAlive()) {
-                e.setPosition(e.getPosition().getNewPos());
+                e.setPosition(e.getPos().getNewPos());
                 System.out.println(e.toString());
             }
         }

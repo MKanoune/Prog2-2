@@ -15,12 +15,12 @@ public abstract class Entity {
         position = new XY(x, y);
     }
 
-    //standart getter & setter methods
+    //standard getter & setter methods
     public int getId() { return id; }
 
     public int getEnergy() { return energy; }
 
-    public XY getPosition() { return position; }
+    public XY getPos() { return position; }
 
     public boolean isAlive() { return alive; }
 
